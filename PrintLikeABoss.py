@@ -1,9 +1,20 @@
-def print_like_a_boss(*elements,left_side=True,title=True):
+def print_like_a_boss(*elements,left_side=True,title=True,show_count=True):
 
     max_length=-1
     for element in elements:
         if len(element)>max_length:
             max_length=len(element)
+
+    if show_count:
+        count=tuple()
+        if title:
+            count = count + ("Num",)
+        for i in range(0,max_length):
+            temp_number=str(i+1)
+            for j in range(0, len(str(len(elements))) - len(str(i))):
+                temp_number= "0" + temp_number
+            count = count + (temp_number,)
+        elements = (count,) + elements
 
     max_list=list()
     for element in elements:
@@ -46,5 +57,3 @@ def print_like_a_boss(*elements,left_side=True,title=True):
                 print("|",end="")
             print("")
     return
-
-print_like_a_boss(["Title 1","One","Two","Three"],["Title 2",1,2,3])
