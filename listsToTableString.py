@@ -2,8 +2,17 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
 
     final_string=""
 
-    # # Convert titles to list
-    # titles=list(titles)
+    # Check if number of titles is right.
+    if (not len(titles)-1 == len(lists)) and not len(titles) == 0:
+        if show_count:
+            raise ValueError(
+                "(1/3) Number of titles does not match with number of appended lists.\nValueError: (2/3) Don't forget to add title for number's count.\nValueError: (3/3) Expect " + str(
+                    len(lists)) + ", got " + str(len(titles)))
+        else:
+            raise ValueError(
+                "(1/2) Number of titles does not match with number of appended lists.\nValueError: (2/2) Expect " + str(
+                    len(lists)) + ", got " + str(len(titles)))
+
 
     max_length_inside_lists = list() # How big will this list's line be
     max_length_of_lists=-1 # How many lines the table will have
@@ -33,7 +42,7 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
             count = count + (temp_number,)
         # Make 1st list the numbers we want to count
         lists = (count,) + lists
-        
+
         try:
             # Append in max_length_inside_list at 1st position
             # the max length of all numbers which is (the length of last element) or (title)
@@ -43,13 +52,6 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
                 raise IndexError
         except IndexError:
             max_length_inside_lists.insert(0, len(count[-1]) + 1)
-
-    # Check if number of titles is right. Checking after appending count numbers in lists
-    if (not len(titles) == len(lists)) and not len(titles) == 0:
-        if show_count:
-            raise ValueError("(1/3) Number of titles does not match with number of appended lists.\nValueError: (2/3) Don't forget to add title for number's count.\nValueError: (3/3) Expect "+str(len(lists))+", got "+str(len(titles)))
-        else:
-            raise ValueError("(1/2) Number of titles does not match with number of appended lists.\nValueError: (2/2) Expect "+str(len(lists))+", got "+str(len(titles)))
 
     # Choice: Show titles?
     if len(titles)>0:
