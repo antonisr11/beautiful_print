@@ -33,12 +33,16 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
             count = count + (temp_number,)
         # Make 1st list the numbers we want to count
         lists = (count,) + lists
-        # Append in max_length_inside_list at 1st position
-        # thw max length of all numbers which is (the length of last element) or (title)
-        if len(count[-1])>len(titles[0]):
-            max_length_inside_lists.insert(0,len(count[-1]) + 1)
-        else:
-            max_length_inside_lists.insert(0, len(titles[0]) + 1)
+        
+        try:
+            # Append in max_length_inside_list at 1st position
+            # the max length of all numbers which is (the length of last element) or (title)
+            if len(count[-1])<len(titles[0]):
+                max_length_inside_lists.insert(0,len(titles[0]) + 1)
+            else:
+                raise IndexError
+        except IndexError:
+            max_length_inside_lists.insert(0, len(count[-1]) + 1)
 
     # Check if number of titles is right. Checking after appending count numbers in lists
     if (not len(titles) == len(lists)) and not len(titles) == 0:
