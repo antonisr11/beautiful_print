@@ -46,6 +46,7 @@ We can show count of each row. Just set show_count=True.
 ## Titles
 
 Usually we want a title so we can present data better. We append tuple or list argument as titles.
+
 Warning! If we use show_count we must define a title for it.
 
 	example
