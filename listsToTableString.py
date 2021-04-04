@@ -57,7 +57,11 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
     if len(titles)>0:
 
         for title_i in range(0,len(titles)):
-            final_string += "|" + str(titles[title_i]) + " " * int(max_length_inside_lists[title_i]-len(str(titles[title_i])))
+            if left_side:
+                final_string += "|" + str(titles[title_i]) + " " * int(max_length_inside_lists[title_i]-len(str(titles[title_i])))
+            else:
+                final_string += "|" + " " * int(max_length_inside_lists[title_i]-len(str(titles[title_i]))) + str(titles[title_i])
+
         final_string += "|\n"
 
         for max_length_inside_current_list in max_length_inside_lists:
