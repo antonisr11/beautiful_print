@@ -79,22 +79,10 @@ By default all elements are in left side. This can change by setting left_side=F
 		print( listsToTableString(cities,census_1991,region,show_count=True,titles=("Count","Cities","Census 1991","Region"),left_side=False) )
 
 	result
-		|Count |Cities       |Census 1991 |Region         |
+		| Count|       Cities| Census 1991|         Region|
 		|------|-------------|------------|---------------|
 		|     1|       Athens|     772.072|         Attica|
 		|     2| Thessaloniki|     383.967|      Macedonia|
 		|     3|        Patra|      152.57| Western Greece|
 		|     4|    Heraklion|      115.27|          Crete|
 		|     5|      Larissa|            |       Thessaly|
-
-
-
-
-
-
-
-
-
-
-
-		
