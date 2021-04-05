@@ -1,9 +1,15 @@
 def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_count=False):
 
     final_string=""
+    has_title=True
+    if len(titles)==0:
+        has_title=False
 
     # Check if number of titles is right.
-    if (not len(titles)-1 == len(lists)) and not len(titles) == 0:
+    # Right: Show titles and don't show count, so length of titles must be equal to length of lists
+    # Right: Show titles and show count, so length of titles must be equal to length of lists - 1 because show count list is not yet appended
+
+    if (has_title and not show_count and not len(titles) == len(lists)) or (has_title and show_count and not (len(titles) == len(lists)-1)) :
         if show_count:
             raise ValueError(
                 "(1/3) Number of titles does not match with number of appended lists.\nValueError: (2/3) Don't forget to add title for number's count.\nValueError: (3/3) Expect " + str(
@@ -22,10 +28,14 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
             max_length_of_lists=len(element)
 
         temp_max=-1
-        if not len(titles)==0:
+        if has_title:
             # When we have titles we should count them as length inside lists
-            # We add 1 in titles because in 0 position there is names' list
-            temp_max = len(titles[lists.index(element)+1])
+
+            if show_count:
+                # We add 1 in titles because in 0 position there is names' list
+                temp_max = len(titles[lists.index(element)+1])
+            else:
+                temp_max = len(titles[lists.index(element)])
         for sub_element in element:
             if len(str(sub_element)) > temp_max:
                 temp_max = len(str(sub_element))
@@ -54,7 +64,7 @@ def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_co
             max_length_inside_lists.insert(0, len(count[-1]) + 1)
 
     # Choice: Show titles?
-    if len(titles)>0:
+    if has_title:
 
         for title_i in range(0,len(titles)):
             if left_side:
