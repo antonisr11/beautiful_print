@@ -17,7 +17,7 @@ First we put as argument every list or tuple we want to print.
 		census_1991 = [772.072, 383.967, 152.570, 115.270]
 		region = ("Attica","Macedonia","Western Greece","Crete","Thessaly")
 		
-		print( listsToTableString(cities,census_1991,region) )
+		print(listsToTableString(cities, census_1991, region))
 	result
 		|Athens       |772.072 |Attica         |
 		|Thessaloniki |383.967 |Macedonia      |
@@ -34,7 +34,7 @@ We can show count of each row. Just set show_count=True.
 		census_1991 = [772.072, 383.967, 152.570, 115.270]
 		region = ("Attica","Macedonia","Western Greece","Crete","Thessaly")
 		
-		print( listsToTableString(cities,census_1991,region,show_count=True) )
+		print(listsToTableString(cities, census_1991, region, show_count = True))
 	result
 		|1 |Athens       |772.072 |Attica         |
 		|2 |Thessaloniki |383.967 |Macedonia      |
@@ -54,8 +54,10 @@ Warning! If we use show_count we must define a title for it.
 		census_1991 = [772.072, 383.967, 152.570, 115.270]
 		
 		region = ("Attica","Macedonia","Western Greece","Crete","Thessaly")
+		
+		titles = ("Count","Cities","Census 1991","Region")
 
-		print( listsToTableString(cities,census_1991,region,show_count=True,titles=("Count","Cities","Census 1991","Region")) )
+		print(listsToTableString(cities, census_1991, region, show_count = True, titles = titles))
 
 	result
 		|Count |Cities       |Census 1991 |Region         |
@@ -75,8 +77,9 @@ By default all elements are in left side. This can change by setting left_side=F
 		cities = ('Athens','Thessaloniki','Patra','Heraklion','Larissa')
 		census_1991 = [772.072, 383.967, 152.570, 115.270]
 		region = ("Attica","Macedonia","Western Greece","Crete","Thessaly")
+		titles = ("Count","Cities","Census 1991","Region")
 
-		print( listsToTableString(cities,census_1991,region,show_count=True,titles=("Count","Cities","Census 1991","Region"),left_side=False) )
+		print(listsToTableString(cities, census_1991, region, show_count = True, titles = titles, left_side = False))
 
 	result
 		| Count|       Cities| Census 1991|         Region|
