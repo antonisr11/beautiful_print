@@ -1,5 +1,3 @@
-#test12
-
 def listsToTableString(*lists, left_side=True,titles= list() or tuple(), show_count=False):
 
     final_string=""
